@@ -1,0 +1,149 @@
+body {
+  margin: 0;
+  background-color: #1b1b1b;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.chat-header {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #e5e5e5;
+}
+
+/* Initially, chat box is hidden */
+.chat-box {
+  display: none;
+  width: 100%;
+  max-width: 700px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px 0;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+/* Input area centered at start */
+.input-area {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.input-box {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  background-color: #40414f;
+  border-radius: 20px;
+  padding: 6px;
+}
+
+.input-box input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 12px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.input-box button {
+  background-color: #fff;
+  color: #1b1b1b;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.input-box button:hover {
+  background-color: #e6e6e6;
+}
+
+/* Message styling */
+.message {
+  margin: 8px 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 70%;
+  word-wrap: break-word;
+  font-size: 1rem;
+}
+
+.user-message {
+  background-color: #40414f;
+  align-self: flex-end;
+  text-align: left;
+}
+
+.ai-message {
+  background-color: #1b1b1b;
+  align-self: flex-start;
+  text-align: left;
+}
+
+/* === After chatting starts === */
+.chat-container.chat-started {
+  justify-content: flex-start;
+  height: 100vh; 
+}
+
+.chat-container.chat-started .chat-header {
+  display: none;
+}
+
+.chat-container.chat-started .chat-box {
+  display: flex;
+  flex-grow: 1;                /* chat messages take remaining space */
+  overflow-y: auto;            /* make messages scrollable */
+  margin-top: 20px;
+  padding-bottom: 70px; 
+}
+
+.chat-container.chat-started .input-area {
+  position: fixed;             /* keep it fixed to the viewport bottom */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1b1b1b;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+.placeholder-message {
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* Optional: subtle blinking animation for realism */
+@keyframes thinkingBlink {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.placeholder-message {
+  animation: thinkingBlink 1.2s infinite;
+}
