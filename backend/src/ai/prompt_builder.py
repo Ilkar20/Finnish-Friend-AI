@@ -9,12 +9,11 @@ Keep reply <= 150 words.
 EXAMPLE_USER = "USER: Minä olla opettaja."
 EXAMPLE_ASSISTANT = "ASSISTANT: Hyvä yritys! Correction: 'Minä olen opettaja.' Explanation: Use 'olen' for 'I am'."
 
-def build_prompt(user_message, history=None):
-    # Include system, a short example, recent history (if any), and the user message.
+def build_prompt(user_message, history=None, max_context_turns=6):
     parts = [SYSTEM_PROMPT, "EXAMPLE:", EXAMPLE_USER, EXAMPLE_ASSISTANT]
     if history:
         parts.append("\nCONTEXT:")
-        for turn in history[-current_app.config.get("MAX_CONTEXT_TURNS", 6):]:
+        for turn in history[-max_context_turns:]:
             role = turn.get("role", "user")
             text = turn.get("text", "")
             parts.append(f"{role.upper()}: {text}")
