@@ -9,7 +9,7 @@ import re
 class TutorService:
     def __init__(self, ollama_client=None):
         self.ollama_client = ollama_client  # allow injection for tests
-        self.model_name = current_app.config.get("MODEL_NAME", "llama3") if current_app else "llama3"
+        self.model_name = current_app.config.get("MODEL_NAME", "gemma3:4b") if current_app else "gemma3:4b"
 
     def _get_client(self):
         if self.ollama_client:

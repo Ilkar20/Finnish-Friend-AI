@@ -1,6 +1,6 @@
 // services/chatService.js
 
-const API_URL = "http://127.0.0.1:5000/chat";
+const API_URL = "http://127.0.0.1:5000/api/chat";
 
 export async function sendMessageToBackend(message) {
   try {
